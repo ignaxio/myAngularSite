@@ -1,0 +1,16 @@
+
+
+<br /><br />
+<h1>Soy la pagina 1</h1> 
+
+<p>{{ vm.mensaje }}</p>
+
+
+
+<div ng-repeat="articulo in vm.articulos">
+  <h2><a href="#{{ articulo.path }}">{{ articulo.title }}</a></h2>
+
+  <div class="cuerpo">
+    {{ articulo.body }}
+  </div>
+</div>

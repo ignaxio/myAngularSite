@@ -1,0 +1,25 @@
+<div class="img-fondo-categoria margenSuperiror50" style="background: url('{{vm.articulo.imagen}}') center center no-repeat; background-size: cover;">
+  <div class="container">
+    <div class=" row row-titulo-articulo">
+      <div class="col-xs-12">
+        <h1>{{vm.articulo.titulo}}</h1><br /> 
+        <p>Publicado el {{vm.articulo.fecha_creacion}} por {{vm.articulo.autor}}</p><br />
+        <p>Categorías: <span ng-repeat="categoria in vm.articulo.categorias"><a ng-href="#/tutoriales{{categoria.url}}"><strong class="text-warning">{{categoria.nombre}}</strong></a>, </span></p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container" ng-bind-html-unsafe="vm.articulo.description" ng-bind-html-unsafe="vm.articulo.subtitulo"> 
+  <!-- Página tutoriales -->
+  <section class="row">
+    <div class="col-xs-12" >
+      <div class="categoria">
+        <div class="page-header">            
+          <h3 ng-bind-html="vm.articulo.subtitulo"></h3>
+
+          <div ng-bind-html="vm.articulo.body"></div>
+        </div>
+      </div>
+    </div>
+  </section>  
+</div>

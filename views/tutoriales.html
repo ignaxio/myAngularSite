@@ -1,0 +1,32 @@
+<div class="container margenSuperiror50"> 
+  <!-- Página tutoriales -->
+  <section class="row">
+    <div class="col-xs-12">
+      <div class="page-header">
+        <h1>Tutoriales escritos por mi</h1>
+      </div>
+      <p>En esta página puedes ver los tutoriales que he escrito sobre sobre desarrollo web, intento realizar tutoriales de calidad con la finalidad de compartir mis conocimientos.</p>
+      <div class="row">
+        <article class="col-xs-12 col-sm-6 col-lg-4" ng-repeat="categoria in vm.tutoriales" ng-bind-html-unsafe="categoria.description">
+          <a ng-href="#/tutoriales{{categoria.url}}">
+            <div class="col-xs-12">
+              <div class="box-element-contenedor row">
+                <div>                
+                  <img class="img-responsive box-element-imagen-pequena" ng-src="{{ categoria.imagen}}" alt="">
+                </div>
+                <div class="box-element col-xs-12">
+                  <div class="box-element-contenido">
+                    <h2>{{ categoria.titulo_desc}}</h2>
+                    <div ng-bind-html="categoria.description"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row-sombra"><div class="sombra"></div></div>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+  <!-- end Página tutoriales -->
+</div>

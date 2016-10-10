@@ -1,0 +1,24 @@
+angular.module('app', [])
+
+.controller('MainCtrl', function($scope, $rootScope, $http) {
+
+  $scope.nombre="Lorenzo";
+  
+  $scope.cambiarNombre=function() {
+     $scope.nombre="Juan";
+  } 
+  
+  
+  $scope.notas = [];
+  $http.get('http://ignaciofarre.local/restNotas').success(function(result) {
+    $scope.notas = result;
+  });
+  
+  
+})
+
+
+
+;
+
+

@@ -1,0 +1,132 @@
+<!-- Implementar algo que al hcer scroll te mande a la sigiente bloque -->
+<!--a href="#/slider">ir a slider</a-->
+
+<!-- portada -->
+<section class="portada margenSuperiror50" style="height: {{ vm.alturaNavegador}}px;">
+  <article>
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+
+      <div class="page-header">
+        <p class="titulo">Ignacio Farré</p>
+      </div>
+      <h1>Experto en Drupal 8, AngularJS, Bootstrap y amante del desarrollo web</h1>
+      <a class="hvr-icon-grow-rotate telefono text-warning" href="tel:+34627190899">+34 627190899</a>
+
+    </div>
+  </article>
+</section>
+<!-- end portada -->  
+
+<div class="container"> 
+
+  <!-- Experiencia profesional -->
+  <section class="experiencias row">
+    <article>
+      <div class="col-xs-12">
+        <div class="page-header">
+          <h2>Experiencia profesonal</h2>
+          <p>Tengo más de {{ vm.annosExperiencia}} años de experincia, y desde entonces cada día me gusta más programar aplicaciones adaptadas para ser reproducidas en un navegador web.</p>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-lg-4" ng-repeat="experiencia in vm.experiencias" ng-mouseleave="experiencia.mostrarTecnologia = false" ng-mouseover="experiencia.mostrarTecnologia = true" ng-bind-html-unsafe="experiencia.textoCorto">
+            <div class="col-xs-12">
+              <div class="box-element-contenedor row">
+                <div>
+                  <div class="row-experiencia-tecnologias"> 
+                    <div class="experiencia-tecnologias" ng-show="experiencia.mostrarTecnologia">
+                      <p class="tecnologia" ng-repeat="tecnologia in experiencia.tecnologias"><span class="label label-info">{{ tecnologia}}</span></p>
+                    </div>
+                  </div>
+                  <img class="img-responsive box-element-imagen-pequena" ng-src="{{ experiencia.imagen500}}" alt="">
+                </div>
+                <div class="box-element col-xs-12">
+                  <img class="experiencia-logo-empresa img-responsive img-circle" ng-src="{{ experiencia.logo}}" alt="">
+                  <p class="text-right">{{ experiencia.anno}}</p>
+                  <div class="box-element-contenido">
+                    <h3>{{ experiencia.titulo}}</h3>
+                    <div ng-bind-html="experiencia.textoCorto"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+  <!-- end Experiencia profesional -->
+
+  <!-- Niveles de capacitación en desarrollo web -->
+  <section class="niveles row">
+    <article>
+      <div class="col-xs-12">
+        <div class="page-header">
+          <h2>Niveles de capacitacion en desarrollo web</h2> 
+          <p>
+            En el siguinte panel podrás ver y "jugar" con los niveles de capacitacón que creo poseer en referencia a desarrollo web, 
+            "puedes variarlos si lo consideras conveniente". No me considero estríctamente ni desrrollador frontend ni backend, <strong>creo que soy un desarrollador frontend con muy buenos conocimientos backend.</strong>
+          </p>
+        </div>
+        <!-- Simple dropdown -->
+        <span uib-dropdown on-toggle="toggled(open)">
+          <a href id="simple-dropdown" uib-dropdown-toggle class="text-warning">
+            ¿Quiéres aumentar mi poder?
+          </a>
+          <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
+            <li ng-repeat="cambioDePoder in vm.cambioDePoderes">
+              <a ng-click="vm.cambiarPoderes(cambioDePoder.cantidad)" href>{{ cambioDePoder.texto}}</a>
+            </li>
+          </ul>
+        </span>  
+        <!--span><a ng-click="vm.reiniciarPoderes()" href> Volver al poder inicial</a></span-->
+        <div ng-repeat="poder in vm.poderes">
+          <div class="row" ng-click="poder.mostrarImput = true" ng-mouseleave="poder.mostrarImput = false" >
+            <div class="col-xs-12 col-md-3">
+              <h4 ng-class="poder.claseTitulo">{{ poder.titulo}}</h4>
+            </div>
+
+            <div class="col-xs-12 col-md-9 barrita">
+              <uib-progressbar ng-class="poder.clase" max="100" value="poder.valor" type="{{ poder.tipo}}"><i>{{ poder.valor}}%</i></uib-progressbar>
+            </div>
+            <div class="col-xs-12 col-md-3 col-md-offset-3 imput-de-poder" ng-show="poder.mostrarImput">
+              <input ng-model="poder.valor" class="form-control" type="text">
+            </div>
+          </div>
+        </div> 
+      </div>
+    </article>
+  </section>
+  <!-- end Niveles de capacitación en desarrollo web -->
+</div>
+  <!-- el mejor adjetivo -->
+  <section class="el-mejor-adjetivo row" style="height: {{ vm.alturaNavegador}}px;">
+    <article>
+      <div class="col-xs-12 col-md-6 col-md-offset-3">
+        <div class="page-header">
+          <h2>¿Cuál es la mejor virtud que puede tener un trabajador?</h2>
+        </div>
+        <p>Soy una persona <strong class="text-warning">{{ vm.elMejorAdjetivo}}</strong> y me gusta indagar en los nuevos campos que van surgiendo en materia de desarrollo web.</p>
+        <br />
+        <input ng-model="vm.elMejorAdjetivo" class="form-control" id="inputWarning" type="text">
+        <p class="text-right text-warning"><strong>¿Cómo quieres que sea?</strong></p>
+      </div>
+    </article>
+  </section>
+  <!-- end el mejor adjetivo -->
+
+<!-- slider -->
+<section class="sliederIgnacio">
+  <uib-carousel active="vm.slier.active" interval="vm.slier.myInterval" no-wrap="vm.slier.noWrapSlides">
+    <uib-slide ng-repeat="slide in vm.slier.slides track by slide.id" index="slide.id" style="height: {{ vm.alturaNavegador}}px; background: url('{{ slide.imagen1000}}') center center no-repeat; background-size: cover; ">
+      <!--img ng-src="{{ slide.image }}" -->
+      <article class="carousel-caption">
+        <h2>{{ slide.titulo}}</h2>
+        <p>{{ slide.resumen}}</p>
+      </article>
+    </uib-slide>
+  </uib-carousel>
+</section>  
+<!-- end slider -->
+
+
+

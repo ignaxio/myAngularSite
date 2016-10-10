@@ -1,0 +1,36 @@
+<html ng-app="app">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+
+  <body ng-controller="MainCtrl">
+  
+    <div>
+    <input ng-model="nombre" >
+       Mi nombre es:{{nombre}}
+       <button ng-click="cambiarNombre()">Cambiar Nombre</button>
+    </div>
+    
+    
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Video</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="movie in movies">
+      <td><a ng-href="#/movie/{{ movie.uuid[0].value }}">
+        {{ movie.title[0].value }}
+      </a></td>
+      <td>{{ movie.field_youtube_url[0].uri }}</td>
+    </tr>
+  </tbody>
+</table>
+    
+  </body>
+
+</html>
+
